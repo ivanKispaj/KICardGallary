@@ -11,20 +11,26 @@ import UIKit
 
 open class GallaryView: UIView {
     
-    // Basic data for the gallery
-    private var gallaryData: GallaryData?
+    // Returns the index of the central view
+    public var selectedIndex: Int {
+        return currentImgPath
+    }
     
     // The currently selected image
     private var currentImgPath = 0
     
     // Colors for the selected and other images
-    private var selectedColor: UIColor = .blue
-    private var unselectedColor: UIColor = .blue.withAlphaComponent(0.5)
+    private var selectedColor: UIColor = .gray
+    private var unselectedColor: UIColor = .gray.withAlphaComponent(0.5)
     
     // Image scrolling direction
     enum GallaryScrollDirection {
         case left, right
     }
+    
+    // Basic data for the gallery
+    private var gallaryData: GallaryData?
+    
     private var directionOf: GallaryScrollDirection!
     
     // Property animatior
@@ -87,15 +93,6 @@ open class GallaryView: UIView {
                             separatorColor: UIColor = .clear,
                             separatorType: SeparatorType = .plain) {
         self.init(frame: .zero)
-        
-        if #available(iOS 13, *) {
-            self.selectedColor = UIColor(named: "select") ?? UIColor.systemGray6
-            self.unselectedColor = UIColor(named: "unselect") ?? UIColor.systemGray
-        } else {
-            self.selectedColor = UIColor(named: "select") ?? UIColor.gray
-            self.unselectedColor = UIColor(named: "unselect") ?? UIColor.gray.withAlphaComponent(0.5)
-        }
-        
         guard images.count > 0 && gallaryWidth > gallaryHeight else {return}
         self.gallaryData = GallaryData(images: images, width: gallaryWidth, separatorColor: separatorColor)
         setupViews()
@@ -105,6 +102,22 @@ open class GallaryView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - public methods
+    
+    // Set the color of the central selected view
+    public func setSelectedColor(_ color: UIColor) {
+        self.selectedColor = color
+    }
+    
+    // Set the color of the side views
+    public func setUnselectedColor(_ color: UIColor) {
+        self.unselectedColor = color
+    }
+    
+    // Set the index of the current central element
+    public func setCurrentActiveImage (on index: Int) {
+        self.currentImgPath = index
+    }
     
     // MARK: - Setup Views
     
