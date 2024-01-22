@@ -14,10 +14,10 @@ public struct GallaryData {
    // private var separatorWidth: CGFloat = 10
     private var separatorType: SeparatorType = .plain
     
-    var images: [UIImage?] = []
+   public var images: [UIImage?] = []
     
     // Returns the width of the central view
-    var currentViewWidth: CGFloat {
+    public var currentViewWidth: CGFloat {
         // The width is less than the height by 20%
         let width = height * 0.8
         if width > self.width {
@@ -27,19 +27,19 @@ public struct GallaryData {
     }
     
     // Returns the height of the central view
-    var currentViewHeight: CGFloat {
+    public var currentViewHeight: CGFloat {
         // Сurrent view equal gallary height
         return self.height
     }
     
     // Returns the width of the side view
-    var sideViewWidth: CGFloat {
+    public var sideViewWidth: CGFloat {
         // The side views are 25% smaller in width than the main height
         return self.currentViewWidth * 0.75
     }
     
     // Returns the height of the side view
-    var sideViewHeight: CGFloat {
+    public var sideViewHeight: CGFloat {
         // The height of the side views is less than the main ones by 15%
         return height * 0.85
     }
@@ -49,39 +49,38 @@ public struct GallaryData {
         self.width = 300
     }
     
-    init(width: CGFloat) {
+    public init(width: CGFloat) {
         self.width = width
     }
     
-    init(images: [UIImage?], width: CGFloat,
+    public init(images: [UIImage?], width: CGFloat,
          height: CGFloat = 220,
          separatorColor: UIColor = .clear,
          mainImgWidth: CGFloat = 3) {
         self.width = width
         self.height = height
         self.separatorColor = separatorColor
-       // self.separatorWidth = separatorWidth
         self.images = images
     }
     
     
     // Returns the width of the gallery
-    func getWidth() -> CGFloat {
+    public func getWidth() -> CGFloat {
         return width
     }
     
     // Returns the height of the gallery
-    func getHeight() -> CGFloat {
+    public func getHeight() -> CGFloat {
         return height
     }
     
     // Returns the color of the separator
-    func getSeparatorColor() -> UIColor {
+    public func getSeparatorColor() -> UIColor {
         return separatorColor
     }
     
     // Returns the width of the separator
-    func getSeparatorWidth() -> CGFloat {
+    public func getSeparatorWidth() -> CGFloat {
         return self.height * 0.046
     }
 }

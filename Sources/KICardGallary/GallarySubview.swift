@@ -8,12 +8,12 @@
 import UIKit
 
 // MARK: - The type of view for activating constraints
-enum ConstraintTypeActivate {
+public enum ConstraintTypeActivate {
     case side,center
 }
 
 // MARK: - GalleryView
-public final class GallarySubview: UIView {
+open class GallarySubview: UIView {
     
     // MARK: -  View
     
@@ -27,23 +27,23 @@ public final class GallarySubview: UIView {
     }()
     
     // MARK: -  Constraints for activation
-    var centerXAnchorConstraint: NSLayoutConstraint?
-    var heightAnchorConstraint: NSLayoutConstraint?
-    var widthAnchorContstraint: NSLayoutConstraint?
-    var leadingAnchorContsraint: NSLayoutConstraint?
-    var trailingAnchorConstraint: NSLayoutConstraint?
+    public var centerXAnchorConstraint: NSLayoutConstraint?
+    public var heightAnchorConstraint: NSLayoutConstraint?
+    public var widthAnchorContstraint: NSLayoutConstraint?
+    public var leadingAnchorContsraint: NSLayoutConstraint?
+    public var trailingAnchorConstraint: NSLayoutConstraint?
     
     // Insets for image
     public lazy var imgEdgeInsets: UIEdgeInsets = UIEdgeInsets(top: 5, left: 15, bottom: 5, right: 15)
    // public lazy var imgEdgeInsets: UIEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     // MARK: - Initialization
     
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
     }
     
-    required init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -75,7 +75,7 @@ public final class GallarySubview: UIView {
     }
     
     // Activate constraints
-    func activateConstraint(to type: ConstraintTypeActivate) {
+    public func activateConstraint(to type: ConstraintTypeActivate) {
         switch type {
         case .center:
             centerXAnchorConstraint?.isActive = true

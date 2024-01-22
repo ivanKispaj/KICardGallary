@@ -49,11 +49,11 @@ open class GallarySeparator: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func isHide() {
+    public func isHide() {
         self.isHidden = true
     }
     
-    func isVisible() {
+    public func isVisible() {
         self.isHidden = false
     }
     
