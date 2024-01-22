@@ -107,7 +107,7 @@ open class GallaryView: UIView {
     // Set the color of the central selected view
     public func setSelectedColor(_ color: UIColor) {
         self.selectedColor = color
-        self.anyViews[self.currentImgPath].backgroundColor = self.selectedColor
+        self.anyViews[self.centerindex].backgroundColor = self.selectedColor
     }
     
     // Set the color of the side views
@@ -127,7 +127,7 @@ open class GallaryView: UIView {
     
     private func updateColors() {
         for (index, view) in anyViews.enumerated() {
-            if index == self.currentImgPath {
+            if index == self.centerindex {
                 view.backgroundColor = self.selectedColor
             } else {
                 view.backgroundColor = self.unselectedColor
