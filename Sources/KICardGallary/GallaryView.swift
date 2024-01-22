@@ -115,7 +115,7 @@ open class GallaryView: UIView {
     }
     
     // Set the index of the current central element
-    public func setCurrentActiveImage (on index: Int) {
+    public func setCurrentActiveImage (index: Int) {
         guard let data = self.gallaryData else {return}
         self.currentImgPath = index
         fillIndexess(data)
