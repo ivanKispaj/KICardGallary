@@ -73,7 +73,7 @@ open class GallaryView: UIView {
     }
     
     // Init with GallaryData
-    convenience init(data gallaryData: GallaryData) {
+    convenience public init(data gallaryData: GallaryData) {
         self.init(frame: .zero)
         self.gallaryData = gallaryData
         guard gallaryData.images.count > 0 else {return}
@@ -81,11 +81,11 @@ open class GallaryView: UIView {
     }
     
     // Init with all data
-    convenience init(images: [UIImage],
-                     gallaryWidth: CGFloat,
-                     gallaryHeight: CGFloat = 220,
-                     separatorColor: UIColor = .clear,
-                     separatorType: SeparatorType = .plain) {
+    convenience public init(images: [UIImage],
+                            gallaryWidth: CGFloat,
+                            gallaryHeight: CGFloat = 220,
+                            separatorColor: UIColor = .clear,
+                            separatorType: SeparatorType = .plain) {
         self.init(frame: .zero)
         
         if #available(iOS 13, *) {
@@ -116,7 +116,7 @@ open class GallaryView: UIView {
          We get the number of additional views in total with currentView should be odd!
          One picture is central and the rest are evenly spaced on the sides
          */
-
+        
         var countAnyViews: Int = 0
         if data.currentViewWidth > (data.getWidth() / 2) {
             countAnyViews = 4
@@ -126,7 +126,7 @@ open class GallaryView: UIView {
                 countAnyViews += 1
             }
         }
-
+        
         
         // Adding additional views
         for _ in 0...countAnyViews - 1 {
@@ -432,7 +432,7 @@ open class GallaryView: UIView {
                     percent.negate()
                 } else {
                     if self.directionOf != .right {
-                      //  break
+                        //  break
                     }
                 }
                 percent /= 400
