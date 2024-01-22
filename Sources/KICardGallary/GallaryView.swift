@@ -27,8 +27,10 @@ open class GallaryView: UIView {
     }
     private var unselectedColor: UIColor = .gray.withAlphaComponent(0.5) {
         willSet {
-            for view in anyViews {
-                view.backgroundColor = newValue
+            for (index,view) in anyViews.enumerated() {
+                if index != self.currentImgPath {
+                    view.backgroundColor = newValue
+                }
             }
         }
     }
