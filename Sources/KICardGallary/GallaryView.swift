@@ -20,8 +20,18 @@ open class GallaryView: UIView {
     private var currentImgPath = 0
     
     // Colors for the selected and other images
-    private var selectedColor: UIColor = .gray
-    private var unselectedColor: UIColor = .gray.withAlphaComponent(0.5)
+    private var selectedColor: UIColor = .gray {
+        willSet {
+            self.currentImageView.backgroundColor = newValue
+        }
+    }
+    private var unselectedColor: UIColor = .gray.withAlphaComponent(0.5) {
+        willSet {
+            for view in anyViews {
+                view.backgroundColor = newValue
+            }
+        }
+    }
     
     // Image scrolling direction
     enum GallaryScrollDirection {
