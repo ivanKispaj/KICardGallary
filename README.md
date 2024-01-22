@@ -75,8 +75,8 @@ class ViewController: UIViewController {
                                       separatorColor: viewBackground)
         
         let view = GallaryView(data: gallaryData)
-        view.setSelectedColor(.cyan)
-        view.setUnselectedColor(.brown)
+        view.setSelectedColor(.systemGray6)
+        view.setUnselectedColor(.systemGray)
         view.setCurrentActiveImage(index: 2)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
