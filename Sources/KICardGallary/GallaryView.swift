@@ -20,20 +20,8 @@ open class GallaryView: UIView {
     private var currentImgPath = 0
     
     // Colors for the selected and other images
-    private var selectedColor: UIColor = .gray {
-        willSet {
-            self.currentImageView.backgroundColor = newValue
-        }
-    }
-    private var unselectedColor: UIColor = .gray.withAlphaComponent(0.5) {
-        willSet {
-            for (index,view) in anyViews.enumerated() {
-                if index != self.currentImgPath {
-                    view.backgroundColor = newValue
-                }
-            }
-        }
-    }
+    private var selectedColor: UIColor = .gray
+    private var unselectedColor: UIColor = .gray.withAlphaComponent(0.5)
     
     // Image scrolling direction
     enum GallaryScrollDirection {
@@ -119,11 +107,13 @@ open class GallaryView: UIView {
     // Set the color of the central selected view
     public func setSelectedColor(_ color: UIColor) {
         self.selectedColor = color
+        self.anyViews[self.currentImgPath].backgroundColor = self.selectedColor
     }
     
     // Set the color of the side views
     public func setUnselectedColor(_ color: UIColor) {
         self.unselectedColor = color
+        updateColors()
     }
     
     // Set the index of the current central element
@@ -132,8 +122,18 @@ open class GallaryView: UIView {
         self.currentImgPath = index
         fillIndexess(data)
         setImageToGallary(data)
+        updateColors()
     }
     
+    private func updateColors() {
+        for (index, view) in anyViews.enumerated() {
+            if index == self.currentImgPath {
+                view.backgroundColor = self.selectedColor
+            } else {
+                view.backgroundColor = self.unselectedColor
+            }
+        }
+    }
     // MARK: - Setup Views
     
     private func setupViews() {
