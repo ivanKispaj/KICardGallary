@@ -7,8 +7,10 @@ let package = Package(
     name: "KICardGallary",
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
+        
         .library(
             name: "KICardGallary",
+            type: .dynamic,
             targets: ["KICardGallary"]),
     ],
     targets: [
